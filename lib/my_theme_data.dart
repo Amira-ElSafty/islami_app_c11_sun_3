@@ -30,4 +30,33 @@ class MyThemeData {
           fontWeight: FontWeight.bold),
     ),
   );
+
+  static final ThemeData darkMode = ThemeData(
+    primaryColor: AppColors.primaryDarkColor,
+    scaffoldBackgroundColor: Colors.transparent,
+    appBarTheme: const AppBarTheme(
+        iconTheme: IconThemeData(color: AppColors.whiteColor),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: AppColors.yellowColor,
+    ),
+    bottomSheetTheme:
+        BottomSheetThemeData(backgroundColor: AppColors.primaryDarkColor),
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(
+          color: AppColors.whiteColor,
+          fontSize: 30,
+          fontWeight: FontWeight.bold),
+      bodyMedium: TextStyle(
+          color: AppColors.whiteColor,
+          fontSize: 25,
+          fontWeight: FontWeight.w700),
+      bodySmall: TextStyle(
+          color: AppColors.whiteColor,
+          fontSize: 22,
+          fontWeight: FontWeight.bold),
+    ),
+  );
 }

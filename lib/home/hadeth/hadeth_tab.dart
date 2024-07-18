@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_islami_sun3_c11/home/hadeth/item_hadeth_name.dart';
+import 'package:flutter_app_islami_sun3_c11/providers/app_config_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../../app_colors.dart';
 
@@ -15,6 +17,7 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     if (ahadethList.isEmpty) {
       loadHadethFile();
     }
@@ -22,7 +25,9 @@ class _HadethTabState extends State<HadethTab> {
       children: [
         Expanded(child: Image.asset('assets/images/hadeth_logo.png')),
         Divider(
-          color: AppColors.primaryLightColor,
+          color: provider.isDarkMode()
+              ? AppColors.yellowColor
+              : AppColors.primaryLightColor,
           thickness: 3,
         ),
         Text(
@@ -30,28 +35,32 @@ class _HadethTabState extends State<HadethTab> {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         Divider(
-          color: AppColors.primaryLightColor,
+          color: provider.isDarkMode()
+              ? AppColors.yellowColor
+              : AppColors.primaryLightColor,
           thickness: 3,
         ),
         Expanded(
           flex: 2,
           child: ahadethList.isEmpty
               ? Center(
-                  child: CircularProgressIndicator(
-                  color: AppColors.primaryLightColor,
-                ))
+              child: CircularProgressIndicator(
+                color: AppColors.primaryLightColor,
+              ))
               : ListView.separated(
-                  separatorBuilder: (context, index) {
-                    return Divider(
-                      color: AppColors.primaryLightColor,
+            separatorBuilder: (context, index) {
+              return Divider(
+                      color: provider.isDarkMode()
+                          ? AppColors.yellowColor
+                          : AppColors.primaryLightColor,
                       thickness: 2,
                     );
-                  },
-                  itemBuilder: (context, index) {
-                    return ItemHadethName(hadeth: ahadethList[index]);
-                  },
-                  itemCount: ahadethList.length,
-                ),
+            },
+            itemBuilder: (context, index) {
+              return ItemHadethName(hadeth: ahadethList[index]);
+            },
+            itemCount: ahadethList.length,
+          ),
         )
       ],
     );

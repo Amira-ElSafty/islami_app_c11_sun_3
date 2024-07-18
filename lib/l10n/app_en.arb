@@ -9,5 +9,8 @@
 "language" : "Language",
 "settings" : "Settings",
 "arabic" : "Arabic",
-"english" : "English"
+"english" : "English",
+"theme" : "Theme",
+"dark" : "Dark",
+"light" : "Light"
 }
